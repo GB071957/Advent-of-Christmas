@@ -1,6 +1,4 @@
-#   Advent of Code problem 7 part 1  Program by Greg Brinks
-
-# Decode Seat Data
+#   Advent of Code problem 7 part 2  Program by Greg Brinks
 
 
 from timeit import default_timer as timeit
