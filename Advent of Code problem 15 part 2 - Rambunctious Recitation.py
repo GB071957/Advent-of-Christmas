@@ -15,7 +15,7 @@ zero_turns = 3
 last_num = 19
 while turn<300000:
     
-    print(f'Turn: {turn} lastnum: {last_num}')
+    #print(f'Turn: {turn} lastnum: {last_num}')
     if last_num in nums_seen:
         ix = nums_seen.index(last_num)
         last_num = turn-turns_seen[ix]
