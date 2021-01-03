@@ -1,0 +1,107 @@
+Advent of code Problem 19 outline
+
+
+Process a list:
+Set changed_value = value of list
+
+For each element in a list:
+a. if it's a string, go to the next element
+b. if it's a list, process a list
+c. if it's an integer, substitute for it.
+	If the returned value is 2 lists, return the two values
+After processing all elements in a list:
+	If all elements are strings, substitute a concatenation of the strings for all elements
+
+
+Return the new value of the list
+
+
+Substitute for an integer:
+Get the value in the rules list associated with the integer.
+If the value is one list:
+	If there's one value in the list, substitute that for the original value
+		(list = original list[0:i] + rules_list[integer] + original list[i+1:]  where i is the index of the integer value in the original list
+	If there are two values in the list, substitute these two values of the original integer value
+		(list = original list[0:i] + rules_list[integer[0]] + original list[i+1:]
+otherwise, if the value is two lists, turn the original list into two lists:
+	The first is original list[0:i] + rules_list[integer][0] + original list[i+1:]
+	The second is original list[0:i] + rules_list[integer][1] + original list[i+1:]
+
+Example:
+0: 4 1 5
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+1.  Process 0.  Result:
+0: ["a", 2,3,5], ["a",3,2,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+2.  Process 0 again. Will process only the first value.
+Result:
+0: ["a", 4,4,3,5], ["a",5,5,3,5], ["a",3,2,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+3.  Process 0 again. Will process only the first value.
+Result:
+0: ["a", "a","a",4,5,5], ["a", "a","a",5,4,5],["a",5,5,3,5], ["a",3,2,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+4.  Process 0 again. Will process the first three values.
+Result:
+0: ["aaaabb"], ["aaabab"],["a","b","b",4,5,5],["a","b","b",5,4,5],["a",3,2,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+5.  Process 0 again. Will process the values 3-5.
+Result:
+0: ["aaaabb"], ["aaabab"],["abbabb"],["abbbab"],["a",4,5,2,5], ["a",5,4,2,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+6.  Process 0 again. Will process only value 5.
+Result:
+0: ["aaaabb"], ["aaabab"],["abbabb"],["abbbab"],["a","a","b",4,4,5],["a","a","b",5,5,5], ["a",5,4,2,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+7.  Process 0 again. Will process values 5 & 6.
+Result:
+0: ["aaaabb"], ["aaabab"],["abbabb"],["abbbab"],["aabaab"],["aabbbb"], ["a","b","a",4,4,5],, ["a","b","a",5,5,5]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
+
+8.  Process 0 again. Will process values 7 & 8.
+Result:
+0: ["aaaabb"], ["aaabab"],["abbabb"],["abbbab"],["aabaab"],["aabbbb"], ["abaaab], ["ababbb"]
+1: 2 3 | 3 2
+2: 4 4 | 5 5
+3: 4 5 | 5 4
+4: "a"
+5: "b"
