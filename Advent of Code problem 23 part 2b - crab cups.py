@@ -1,4 +1,4 @@
-#   Advent of Code problem 19 part 1 - Monster Message - Program by Greg Brinks
+#   Advent of Code problem 23 part 2 - Crab Cups - Program by Greg Brinks
 
 from timeit import default_timer as timeit
 start= timeit()
