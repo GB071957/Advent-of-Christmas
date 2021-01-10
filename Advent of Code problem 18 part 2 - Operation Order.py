@@ -88,10 +88,12 @@ with open("Advent of Code problem 18 - Operation Order data.txt") as oo_file:
     file_contents = csv.reader(oo_file, delimiter='\n')
     
     tot_answers = 0
+    i = 0
     
     for line in file_contents:
         
         tot_answers += eval_exp(line[0])
+        i+=1
    
 print(f'Total of answers: {tot_answers}')
 end = timeit()
