@@ -8,7 +8,7 @@ import csv, re
 tile_num_regex = r'Tile (\d+):'
 
 piece_data = []
-with open("Advent of Code problem 20 - Jurassic Jigsaw data.txt") as mm_file:
+with open("Advent of Code problem 20 -test2 Jurassic Jigsaw data.txt") as mm_file:
     file_contents = csv.reader(mm_file, delimiter='\n')
 
     dataline_num = 0

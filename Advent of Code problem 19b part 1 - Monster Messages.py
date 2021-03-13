@@ -102,7 +102,7 @@ def process_list(in_list):
         return in_list
             
 
-with open("Advent of Code problem 19 - Monster message data.txt") as mm_file:
+with open("Advent of Code problem 19 - test2 Monster message data.txt") as mm_file:
     file_contents = csv.reader(mm_file, delimiter='\n')
 
     
@@ -111,9 +111,10 @@ with open("Advent of Code problem 19 - Monster message data.txt") as mm_file:
         if line ==[]:
             continue
         elif '"' in line[0]:  # this is a rule that includes a reference to an alphabetic character
-            rules_list.append([int(line[0][0:2]),line[0][5]])
+            ix = line[0].find(":")
+            rules_list.append([int(line[0][0:ix]),line[0][ix+3]])
             #rules_list.append([int(line[0][0:1]),line[0][4]])
-            alpha_ref_rules.append(int(line[0][0:2]))
+            alpha_ref_rules.append(int(line[0][0:ix]))
             #alpha_ref_rules.append(int(line[0][0:1]))
         elif line[0][0] not in ['a','b']:
             fields = re.search(rules_regex,line[0])
